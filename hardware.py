@@ -53,7 +53,7 @@ class Gpioset:
                 GPIO.output(self.led, 0)
                 self.buzzer_off()
                 break
-            if count >= 30:
+            if count >= 20:
                 self.buzzer_off()
                 break
 

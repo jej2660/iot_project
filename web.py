@@ -18,7 +18,18 @@ def setAlarm():
 @app.route('/start')
 def start():
     alarm.setTime(settime)
-    th.start()
+    try:
+        th.start()
+    except Exception:
+        return "Already Operation"
+    return "ok"
+@app.route('/stop')
+def stop():
+    alarm.setTime(settime)
+    try:
+        th.start()
+    except Exception:
+        return "Already Operation"
     return "ok"
     
 if __name__ == "__main__":

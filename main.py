@@ -8,16 +8,17 @@ class Alarm:
     def setTime(self, value):
         self.wake = value
     def run(self):
-        nowtime = time.strftime('%H:%M', time.localtime(time.time()))
-        if nowtime != self.wake:
-            self.gpioset.run()
-            self.gpioset.lcdplay("WakeUp!!!", nowtime)
-            print("wake")
-            time.sleep(10)
-            self.gpioset.buzzer_off()
-            self.gpioset.lcdplay(str(self.trading.getBalance()),str(self.trading.currentCoinPrice(self.trading.sym)))
-            self.trading.createOrder()
-            self.gpioset.lcd_clear()
-            self.gpioset.lcdplay("Check", "Your Money")
-            return
+        while True:
+            time.sleep(1)
+            nowtime = time.strftime('%H:%M', time.localtime(time.time()))
+            if nowtime == self.wake:
+                self.gpioset.lcdplay("WakeUp!!!", nowtime)
+                self.gpioset.run()
+                print("wake")
+                time.sleep(10)
+                self.gpioset.buzzer_off()
+                self.gpioset.lcdplay(str(self.trading.getBalance()),str(self.trading.currentCoinPrice(self.trading.sym)))
+                self.trading.createOrder()
+                time.sleep(10)
+                return
 
