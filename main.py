@@ -14,7 +14,7 @@ class Alarm:
             self.gpioset.run()
             self.gpioset.lcdplay("WakeUp!!!", "!!!")
             time.sleep(30)
-            self.gpioset.lcdplay(str(self.trading.getBalance(self.trading.sym)),str(self.trading.currentCoinPrice()))
+            self.gpioset.lcdplay(str(self.trading.getBalance()),str(self.trading.currentCoinPrice(self.trading.sym)))
             self.trading.createOrder()
             self.gpioset.lcd_clear()
             self.gpioset.lcdplay("Check", "Your Money")
