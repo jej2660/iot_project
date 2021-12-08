@@ -1,4 +1,3 @@
-from re import A
 from flask import Flask, escape, request,render_template
 from main import Alarm
 import threading
