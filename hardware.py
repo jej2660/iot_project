@@ -54,6 +54,7 @@ class Gpioset:
                 self.buzzer_off()
                 break
             if count >= 30:
+                self.buzzer_off()
                 break
 
 if __name__ == "__main__":
