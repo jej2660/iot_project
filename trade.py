@@ -15,14 +15,9 @@ class Trading:
     def currentCoinPrice(self, symbol):
         return self.client.get_avg_price(symbol=symbol)['price']
     def preciseQuantity(self, quantity):
-        symbol_info = self.client.get_symbol_info('BTCUSDT')
-        step_size = 0.0
-        for f in symbol_info['filters']:
-            if f['filterType'] == 'LOT_SIZE':
-                step_size = float(f['stepSize'])
-        precision = int(round(-math.log(step_size, 10), 0))
+        print(quantity)
         quantity = float(round(quantity, 2)) * 10
-        print(precision - 1, quantity)
+        print(quantity)
         return quantity
 
     def closeOrder(self):
@@ -30,18 +25,19 @@ class Trading:
         for id in orderdata:
             self.client.futures_cancel_order(orderid=id['orderid'])
         #self.client.futures_cancel_orders(symbol=self.sym)
-        
+
     def createOrder(self):
         money = self.getBalance()
         price = self.currentCoinPrice(self.sym)
         pos_side = self.side[random.randint(0,1)]
         quantity = (float(money) * (random.randint(0, 30) * 0.01)) / float(price)
         quantity = self.preciseQuantity(quantity)
+        print("before",quantity)
         self.client.futures_create_order(symbol=self.sym, side=pos_side, type='MARKET', quantity=float(quantity))
 if __name__ == "__main__":
     trading = Trading()
     #print(trading.currentCo()inPrice("BTCUSDT"))
     #print(trading.getBalance())
-    #print(trading.createOrder())
+    print(trading.createOrder())
     #trading.closeOrder()
     #trading.getQuantity()
