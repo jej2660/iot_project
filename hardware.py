@@ -56,12 +56,3 @@ class Gpioset:
             if count >= 20:
                 self.buzzer_off()
                 break
-
-if __name__ == "__main__":
-    gpio = Gpioset()
-    gpio.lcdplay("hello", "world")
-    time.sleep(1.0)
-    gpio.lcd_clear()
-    time.sleep(1.0)
-    gpio.lcd_off()
-    gpio.run()

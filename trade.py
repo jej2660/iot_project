@@ -24,7 +24,6 @@ class Trading:
         orderdata = self.client.futures_get_all_orders(symbol=self.sym)
         for id in orderdata:
             self.client.futures_cancel_order(orderid=id['orderid'])
-        #self.client.futures_cancel_orders(symbol=self.sym)
 
     def createOrder(self):
         money = self.getBalance()
@@ -36,8 +35,4 @@ class Trading:
         self.client.futures_create_order(symbol=self.sym, side=pos_side, type='MARKET', quantity=float(quantity))
 if __name__ == "__main__":
     trading = Trading()
-    #print(trading.currentCo()inPrice("BTCUSDT"))
-    #print(trading.getBalance())
     print(trading.createOrder())
-    #trading.closeOrder()
-    #trading.getQuantity()

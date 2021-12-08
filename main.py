@@ -21,4 +21,3 @@ class Alarm:
                 self.trading.createOrder()
                 time.sleep(10)
                 return
-
