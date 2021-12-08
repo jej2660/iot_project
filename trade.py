@@ -33,6 +33,3 @@ class Trading:
         quantity = self.preciseQuantity(quantity)
         print("before",quantity)
         self.client.futures_create_order(symbol=self.sym, side=pos_side, type='MARKET', quantity=float(quantity))
-if __name__ == "__main__":
-    trading = Trading()
-    print(trading.createOrder())
