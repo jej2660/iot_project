@@ -38,9 +38,11 @@ class Gpioset:
 
     def run(self):
         self.gpioinit()
+        count = 0
         def button_callback(channel):
             GPIO.output(self.led, 0)
         while 1:
+            count += 1
             GPIO.output(self.led, 1)
             self.p.ChangeFrequency(self.scale[0])
             time.sleep(0.5)
@@ -50,6 +52,8 @@ class Gpioset:
             if GPIO.input(self.button) == 1:
                 GPIO.output(self.led, 0)
                 self.buzzer_off()
+                break
+            if count >= 30:
                 break
 
 if __name__ == "__main__":
