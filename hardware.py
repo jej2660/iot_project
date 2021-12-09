@@ -52,6 +52,11 @@ class Gpioset:
             if GPIO.input(self.button) == 1:
                 GPIO.output(self.led, 0)
                 self.buzzer_off()
+                self.lcd_clear()
+                self.lcdplay("!!!!Good!!!!", "!!!!Good!!!!")
+                time.sleep(5)
+                self.lcd_off()
+                raise Exception('Good')
                 break
             if count >= 20:
                 self.buzzer_off()
