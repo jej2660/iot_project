@@ -26,6 +26,6 @@ class Alarm:
                 print(balance,'\n', btcprice)
                 self.gpioset.lcdplay("Balance:"+str(balance),"BTC:"+str(btcprice))
                 self.trading.createOrder()
-                time.sleep(5)
+                time.sleep(10)
                 self.gpioset.lcd_off()
                 return

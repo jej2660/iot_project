@@ -17,7 +17,11 @@ def setAlarm():
     return settime
 @app.route('/start')
 def start():
+    global alarm
+    global th
+    alarm = Alarm()
     alarm.setTime(settime)
+    th = threading.Thread(target=alarm.run)
     try:
         th.start()
     except Exception:
