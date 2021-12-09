@@ -30,6 +30,7 @@ class Trading:
         price = self.currentCoinPrice(self.sym)
         pos_side = self.side[random.randint(0,1)]
         quantity = (float(money) * (random.randint(0, 30) * 0.01)) / float(price)
-        quantity = self.preciseQuantity(quantity)
         print("before",quantity)
+        quantity = self.preciseQuantity(quantity)
+        print("send",quantity)
         self.client.futures_create_order(symbol=self.sym, side=pos_side, type='MARKET', quantity=float(quantity))
