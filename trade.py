@@ -16,7 +16,7 @@ class Trading:
         return self.client.get_avg_price(symbol=symbol)['price']
     def preciseQuantity(self, quantity):
         print(quantity)
-        quantity = float(round(quantity, 2)) * 10
+        quantity = round(quantity, 2) * 10
         print(quantity)
         return quantity
 
