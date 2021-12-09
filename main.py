@@ -18,7 +18,8 @@ class Alarm:
                 print("wake")
                 time.sleep(10)
                 self.gpioset.buzzer_off()
-                self.gpioset.lcdplay(str(self.trading.getBalance()),str(self.trading.currentCoinPrice(self.trading.sym)))
+                self.gpioset.lcdplay("Balance:"+str(int(self.trading.getBalance())),"BTC:"+str(int(self.trading.currentCoinPrice(self.trading.sym))))
                 self.trading.createOrder()
                 time.sleep(5)
+                self.gpioset.lcd_off()
                 return
