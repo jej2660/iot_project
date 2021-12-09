@@ -25,12 +25,8 @@ def start():
     return "ok"
 @app.route('/stop')
 def stop():
-    alarm.setTime(settime)
-    try:
-        th.start()
-    except Exception:
-        return "Already Operation"
-    return "ok"
+    alarm.stopflag = True
+    return "stop"
     
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
