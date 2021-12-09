@@ -15,7 +15,7 @@ class Alarm:
                 return
             nowtime = time.strftime('%H:%M', time.localtime(time.time()))
             print("nowtime:",nowtime ,"\nSetime:",self.wake)
-            if nowtime != self.wake:
+            if nowtime == self.wake:
                 self.gpioset.lcdplay("WakeUp!!!", nowtime)
                 self.gpioset.run()
                 print("wake")
