@@ -17,18 +17,16 @@ class Gpioset:
         GPIO.setup(self.button, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(self.led, GPIO.OUT)
         GPIO.setup(self.buzzer, GPIO.OUT)
-        self.p = GPIO.PWM(self.buzzer, 5)
+        self.p = GPIO.PWM(self.buzzer, 2)
         self.p.start(100)
         self.p.ChangeDutyCycle(50)
 
     def lcdplay(self, first, second):
         self.mylcd.lcd_display_string(first, 1)
         self.mylcd.lcd_display_string(second, 2)
-    
-    def lcd_clear(self):
-        self.mylcd.lcd_clear()
-    
+
     def lcd_off(self):
+        self.mylcd.lcd_clear()
         self.mylcd.backlight(0)
 
     def buzzer_off(self):
